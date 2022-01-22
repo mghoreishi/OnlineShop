@@ -1,0 +1,152 @@
+﻿@page
+@model ServiceHost.Pages.OrdersModel
+@using _0_Framework.Application
+@{
+    ViewData["Title"] = "My Orders";
+    int rowNumber = 1;
+}
+
+
+<div class="breadcrumb-area section-space--half">
+    <div class="container wide">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-wrapper breadcrumb-bg">
+                    <div class="breadcrumb-content">
+                        <h2 class="breadcrumb-content__title">My Orders</h2>
+                        <ul class="breadcrumb-content__page-map">
+                            <li>
+                                <a asp-page="./Index">HOME</a>
+                            </li>
+                            <li class="active">My Orders</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+                        <form method="post">
+                            <div class="cart-table table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Row</th>
+                                            <th>Tracking Number </th>
+                                            <th>Order Date </th>
+                                            @*<th>Total Amount</th>*@
+                                            <th>Total Discount</th>
+                                            <th>Paid Amount</th>
+                                            <th>Payment Method</th>
+                                            <th>Status</th>
+                                            <th>View</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Orders)
+                                        {
+                                            <tr>
+
+                                                <td class="pro-title">
+                                                    <a>  @rowNumber</a>
+                                                </td>
+                                                <td class="pro-title">
+                                                    <a>@item.IssueTrackingNo</a>
+                                                </td>
+                                                <td class="pro-title">
+                                                    <a>@item.CreationDate</a>
+                                                </td>
+
+                                                @*<td class="pro-price">
+                                                        <span>@item.TotalAmount.ToMoney()$</span>
+                                                    </td>*@
+                                                <td class="pro-price">
+                                                    <span>@item.DiscountAmount.ToMoney() </span>
+                                                </td>
+                                                <td class="pro-price">
+                                                    <span>@item.PayAmount.ToMoney()$</span>
+                                                </td>
+                                                <td class="pro-title">
+                                                    <span>@item.PaymentMethod</span>
+                                                </td>
+                                                <td class="pro-title">
+                                                    @if (item.IsCanceled)
+                                                    {
+                                                        <span class="text-danger">Canceled</span>
+                                                    }
+                                                    @if (item.IsPaid)
+                                                    {
+                                                        <span class="text-success">Paid</span>
+                                                    }
+                                                    @if (!item.IsCanceled && !item.IsPaid)
+                                                    {
+                                                        <span class="text-warning">Pending</span>
+                                                    }
+                                                </td>
+                                                <td class="pro-title" width="20">
+                                                    <a class="btn btn-primary m-rl-5"
+                                                       href="@Url.Page("./Orders", "Items", new { id = item.Id })">
+                                                        View
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                            rowNumber++;
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            @*<div>
+                                    <ul class="pagination">
+                                        @for (var i = 1; i <= Model.TotalPages; i++)
+                                        {
+                                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                                <a asp-page="/pagination" asp-route-currentpage="@i" class="page-link">@i</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>*@
+
+
+                            @if (Model.Orders.Count != 0)
+                            {
+                                <div class="pagination-area">
+                                    <div class="pagination-area__left">
+                                        Showing Page <span>@Model.CurrentPage</span>  (<span>@Model.CountPages</span>
+                                        @{if (@Model.CountPages == 1)
+                                            {<span>Page)</span> } }
+                                        @{if (@Model.CountPages > 1)
+                                            {<span>Pages)</span> } }
+                                    </div>
+                                    <div class="pagination-area__right">
+                                        <ul class="pagination-section">
+                                            @for (var i = 1; i <= Model.TotalPages; i++)
+                                            {
+                                                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                                    <a asp-page="/Orders" asp-route-currentpage="@i">@i</a>
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

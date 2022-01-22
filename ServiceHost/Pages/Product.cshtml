@@ -1,0 +1,368 @@
+﻿@page "{id}"
+@model ServiceHost.Pages.ProductModel
+@{
+    ViewData["Title"] = Model.Product.Name;
+    ViewData["keywords"] = Model.Product.Keywords;
+    ViewData["metaDescription"] = Model.Product.MetaDescription;
+}
+
+<div class="breadcrumb-area section-space--half">
+    <div class="container wide">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-wrapper breadcrumb-bg">
+                    <div class="breadcrumb-content">
+                        <h1 class="breadcrumb-content__title">@Model.Product.Name</h1>
+                        <ul class="breadcrumb-content__page-map">
+                            <li>
+                                <a asp-page="/Index">HOME</a>
+                            </li>
+                            <li>
+                                <a asp-page="/ProductCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
+                            </li>
+                            <li class="active">@Model.Product.Name</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+                        <div class="single-product-main-content-area section-space" style="direction: ltr;">
+                            <div class="row" style="display: flex; flex-direction: row-reverse">
+                                <div class="col-lg-6">
+                                    <div class="product-details-slider-area">
+                                        <div class="big-image-wrapper">
+                                            <div class="product-details-big-image-slider-wrapper product-details-big-image-slider-wrapper--bottom-space ht-slick-slider"
+                                                 data-slick-setting='{
+                                                    "slidesToShow": 1,
+                                                    "slidesToScroll": 1,
+                                                    "arrows": false,
+                                                    "autoplay": false,
+                                                    "autoplaySpeed": 5000,
+                                                    "fade": true,
+                                                    "speed": 500,
+                                                    "prevArrow": {"buttonClass": "slick-prev", "iconClass": "fa fa-angle-left" },
+                                                    "nextArrow": {"buttonClass": "slick-next", "iconClass": "fa fa-angle-right" }
+                                                }' data-slick-responsive='[
+                                                    {"breakpoint":1501, "settings": {"slidesToShow": 1, "arrows": false} },
+                                                    {"breakpoint":1199, "settings": {"slidesToShow": 1, "arrows": false} },
+                                                    {"breakpoint":991, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
+                                                ]'>
+
+                                                <div class="single-image">
+                                                    <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
+                                                         alt="@Model.Product.Picture">
+                                                </div>
+                                                @foreach (var picture in Model.Product.Pictures)
+                                                {
+                                                    <div class="single-image">
+                                                        <img src="~/ProductPictures/@picture.Picture" class="img-fluid"
+                                                             alt="@picture.PictureAlt" title="@picture.PictureTitle">
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+
+
+                                        <div class="product-details-small-image-slider-wrapper product-details-small-image-slider-wrapper--horizontal-space ht-slick-slider"
+                                             data-slick-setting='{
+                                                    "slidesToShow": 4,
+                                                    "slidesToScroll": 1,
+                                                    "arrows": true,
+                                                    "autoplay": false,
+                                                    "autoplaySpeed": 5000,
+                                                    "speed": 500,
+                                                    "asNavFor": ".product-details-big-image-slider-wrapper",
+                                                    "focusOnSelect": true,
+                                                    "centerMode": false,
+                                                    "prevArrow": {"buttonClass": "slick-prev", "iconClass": "fa fa-angle-left" },
+                                                    "nextArrow": {"buttonClass": "slick-next", "iconClass": "fa fa-angle-right" }
+                                                }' data-slick-responsive='[
+                                                    {"breakpoint":1501, "settings": {"slidesToShow": 3, "arrows": false} },
+                                                    {"breakpoint":1199, "settings": {"slidesToShow": 3, "arrows": false} },
+                                                    {"breakpoint":991, "settings": {"slidesToShow": 5, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":767, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":575, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
+                                                ]'>
+                                            <div class="single-image">
+                                                <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
+                                                     alt="@Model.Product.Picture">
+                                            </div>
+                                            @foreach (var picture in Model.Product.Pictures)
+                                            {
+                                                <div class="single-image">
+                                                    <img src="~/ProductPictures/@picture.Picture" class="img-fluid"
+                                                         alt="@picture.PictureAlt" title="@picture.PictureTitle">
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="single-product-content-description">
+                                        <p class="single-info">
+                                            <a asp-page="/ProductCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
+                                        </p>
+                                        <h2 class="product-title">@Model.Product.Name</h2>
+                                        <div class="product-rating">
+                                            @*<span class="rating">
+                                                    <i class="ion-android-star active"></i>
+                                                    <i class="ion-android-star active"></i>
+                                                    <i class="ion-android-star active"></i>
+                                                    <i class="ion-android-star active"></i>
+                                                    <i class="ion-android-star-outline"></i>
+                                                </span>*@
+
+                                            <span class="review-count">
+                                                <a href="#">(@Model.Product.Comments.Count reviews)</a> | <a href="#">Write A Review</a>
+                                            </span>
+                                        </div>
+
+                                        <p class="single-grid-product__price">
+                                            @if (Model.Product.HasDiscount)
+                                            {
+                                                <span class="main-price discounted">@Model.Product.Price$</span>
+                                                <span class="discounted-price">@Model.Product.PriceWithDiscount$</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="main-price">@Model.Product.Price$</span>
+                                            }
+
+                                        </p>
+
+                                        <p class="single-info">Product Code: <span class="value">@Model.Product.Code</span> </p>
+                                        <p class="single-info">
+                                            @if (Model.Product.IsInStock)
+                                            {
+                                                <span class="text-success">In Stock</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">Out of Stock</span>
+                                            }
+                                        </p>
+
+                                        <p class="product-description">
+                                            @Model.Product.ShortDescription
+                                        </p>
+                                        @if (Model.Product.HasDiscount)
+                                        {
+                                            <div class="product-countdown" data-countdown="@Model.Product.DiscountExpireDate"></div>
+                                        }
+
+                                        <div class="product-actions">
+                                            <div class="quantity-selection">
+                                                <label>Qty</label>
+                                                <input type="number" value="1" min="1" id="productCount">
+                                            </div>
+                                            <div class="product-buttons">
+                                                <a class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name', '@Model.Product.DoublePrice', '@Model.Product.Picture')">
+                                                    <i class="ion-bag"></i> ADD TO CART
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="social-share-buttons mt-20">
+                                            <h5>SHARE THIS PRODUCT</h5>
+                                            <ul>
+                                                <li>
+                                                    <a class="twitter" href="#">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="facebook" href="#">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="google-plus" href="#">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="pinterest" href="#">
+                                                        <i class="fa fa-pinterest"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <p class="single-info mb-0">
+                                            Tags: @Model.Product.Keywords
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-description-review-area">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="tab-slider-wrapper product-description-review-container  section-space--inner">
+                                        <nav>
+                                            <div class="nav nav-tabs justify-content-center" id="nav-tab"
+                                                 role="tablist">
+                                                <a class="nav-item nav-link active" id="description-tab"
+                                                   data-toggle="tab" href="#product-description" role="tab"
+                                                   aria-selected="true">Description</a>
+                                                <a class="nav-item nav-link" id="review-tab" data-toggle="tab"
+                                                   href="#review" role="tab" aria-selected="false">Reviews (@Model.Product.Comments.Count)</a>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="product-description"
+                                                 role="tabpanel" aria-labelledby="description-tab">
+                                                <div class="product-description">
+                                                    @Model.Product.Description
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="review" role="tabpanel"
+                                                 aria-labelledby="review-tab">
+                                                <div class="comment-section">
+                                                    <h3 class="comment-counter">COMMENTS (@Model.Product.Comments.Count)</h3>
+                                                    <div class="comment-container">
+                                                        @foreach (var comment in Model.Product.Comments)
+                                                        {
+                                                            <div class="single-comment" id="comment-@comment.Id">
+                                                                <span class="reply-btn">
+                                                                    <a href="#postComment" onclick='$(".commentParentId").val(@comment.Id)'>Reply</a>
+                                                                </span>
+                                                                @*<div class="image">
+                                                                        <img src="~/Theme/assets/img/blog/comment-icon.png" alt="" width="50" height="50">
+                                                                    </div>*@
+                                                                <div class="content">
+                                                                    <h3 class="user">
+                                                                        @comment.Name <span class="comment-time">
+                                                                            @comment.CreationDate
+                                                                        </span>
+                                                                    </h3>
+                                                                    @if (comment.ParentId > 0)
+                                                                    {
+                                                                        <p class="replytitle">
+                                                                            <span> Reply To:  </span> <a href="#comment-@comment.ParentId">@comment.parentName</a>
+                                                                        </p>
+                                                                    }
+                                                                    <p class="comment-text">@comment.Message</p>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+
+                                                    <div class="comment-form-container">
+                                                        <h3 class="comment-form-title">LEAVE A REPLY</h3>
+                                                        <p>
+                                                            Your email address will not be published. Required fields are marked *
+                                                        </p>
+                                                        <div class="comment-form" id="postComment">
+                                                            <form method="post">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group">
+                                                                            <label>Comment</label>
+                                                                            <textarea name="message" id="messaeg" placeholder="Write Your Comment..."></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <div class="form-group">
+                                                                            <label>Name <span class="required">*</span></label>
+                                                                            <input type="text" name="name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <div class="form-group">
+                                                                            <label>Email <span class="required">*</span></label>
+                                                                            <input type="text" name="email">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <div class="form-group">
+                                                                            <label>Website</label>
+                                                                            <input type="text" name="website">
+                                                                        </div>
+                                                                    </div>
+                                                                    <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
+                                                                    <input type="hidden" name="articleSlug" value="@Model.Product.Slug" />
+                                                                    <input type="hidden" name="parentId" class="commentParentId" value="" />
+                                                                    <div class="col-lg-12">
+                                                                        <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
+                                                                        <input type="hidden" name="type" value="@CommnetManagement.Infrastructure.EFCore.CommentType.Product" />
+                                                                        <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
+                                                                        <button type="submit" class="comment-btn" name="submit">
+                                                                            POST COMMENT
+                                                                        </button>
+                                                                    </div>
+                                                                    @if (Model.CommentMessage != null)
+                                                                    {
+                                                                        <div class="col-12"> <div class="alert alert-success" style="margin:5px">@Model.CommentMessage</div></div>
+
+                                                                    }
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--<div class="product-rating-wrap">
+
+                                                @foreach (var comment in Model.Product.Comments)
+                                                {
+                                                    <div class="ratings-wrapper">
+                                                        <div class="sin-ratings">
+                                                            <div class="rating-author">
+                                                                <h3>@comment.Name</h3>
+
+                                                            </div>
+                                                            <p>@comment.Message</p>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                                <div class="rating-form-wrapper fix">
+                                                    <h3>ADD YOUR COMMENTS</h3>
+                                                    <form method="post">
+                                                        <div class="rating-form row">
+                                                            <div class="col-md-6 col-12 form-group">
+                                                                <label for="name">Name:</label>
+                                                                <input id="name" placeholder="Name" name="name" type="text">
+                                                            </div>
+                                                            <div class="col-md-6 col-12 form-group">
+                                                                <label for="email">Email:</label>
+                                                                <input id="email" placeholder="Email" name="email" type="text">
+                                                            </div>
+                                                            <div class="col-12 form-group">
+                                                                <label for="your-review">Your Review:</label>
+                                                                <textarea name="message" id="message" placeholder="Write a review ..."></textarea>
+                                                            </div>
+                                                            <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />-->
+                                                @*<input type="hidden" name="type" value="@CommnetManagement.Infrastructure.EFCore.CommentType.Product" />*@
+                                                <!--<input type="hidden" name="productSlug" value="@Model.Product.Slug" />
+                                                                <div class="col-12">
+                                                                    <input value="ADD REVIEW" type="submit">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

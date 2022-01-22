@@ -1,0 +1,107 @@
+﻿@page
+@using _0_Framework.Application
+@model ServiceHost.Pages.CartModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<div class="breadcrumb-area section-space--half">
+    <div class="container wide">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-wrapper breadcrumb-bg">
+                    <div class="breadcrumb-content">
+                        <h2 class="breadcrumb-content__title">Your Cart</h2>
+                        <ul class="breadcrumb-content__page-map">
+                            <li>
+                                <a asp-page="./Index">HOME</a>
+                            </li>
+                            <li class="active">Cart</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-wrapper">
+
+                    <div id="productStockWarnings">
+                        @foreach (var item in Model.CartItems.Where(x => !x.IsInStock))
+                        {
+                        <div class="alert alert-warning" id="@item.Id">
+                            <i class="fa fa-warning"></i> Product
+                            <strong>@item.Name</strong>
+                            is in stock less than the requested number.
+                        </div>
+                        }
+                    </div>
+
+                    <div class="page-content-wrapper">
+                        <div class="cart-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="pro-thumbnail">Image</th>
+                                    <th class="pro-title">Product</th>
+                                    <th class="pro-price">Unit Price</th>
+                                    <th class="pro-quantity">Qty</th>
+                                    <th class="pro-subtotal">Grand Total</th>
+                                    <th class="pro-remove">Remove</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in Model.CartItems)
+                                {
+                                    <tr>
+                                        <td class="pro-thumbnail">
+                                            <a href="single-product.html">
+                                                <img src="~/ProductPictures/@item.Picture" class="img-fluid" alt="@item.Name">
+                                            </a>
+                                        </td>
+                                        <td class="pro-title">
+                                            <span>@item.Name</span>
+                                        </td>
+                                        <td class="pro-price">
+                                            <span>@item.UnitPrice.ToMoney()</span>
+                                        </td>
+                                        <td class="pro-quantity">
+                                            <div class="quantity-selection">
+                                                <input type="number" value="@item.Count" min="1" onchange="changeCartItemCount('@item.Id', 'totalItemPrice-@item.Id', this.value)">
+                                            </div>
+                                        </td>
+                                        <td class="pro-subtotal">
+                                            <span id="totalItemPrice-@item.Id">@item.TotalItemPrice.ToMoney()</span>
+                                        </td>
+                                        <td class="pro-remove">
+                                            <a asp-page-handler="RemoveFromCart" asp-route-id="@item.Id">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12 d-flex">
+                                <div class="cart-summary">
+                                    <div class="cart-summary-button">
+                                        
+                                        <a class="checkout-button" asp-page-handler="GoToCheckOut">CHECKOUT</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

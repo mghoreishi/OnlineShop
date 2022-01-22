@@ -1,0 +1,124 @@
+﻿@page
+@using _0_Framework.Application
+@using ShopManagement.Application.Contracts
+@model ServiceHost.Pages.CheckoutModel
+@{
+    ViewData["Title"] = "Confirm Cart and Payment";
+}
+
+<div class="breadcrumb-area section-space--half">
+    <div class="container wide">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-wrapper breadcrumb-bg">
+                    <div class="breadcrumb-content">
+                        <h2 class="breadcrumb-content__title">Confirm Cart / Payment</h2>
+                        <ul class="breadcrumb-content__page-map">
+                            <li>
+                                <a asp-page="./Index">HOME</a>
+                            </li>
+                            <li class="active">Confirm Cart / Payment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+                        <form method="post">
+                            <div class="cart-table table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="pro-thumbnail">Image</th>
+                                            <th class="pro-thumbnail">Product</th>
+                                            <th class="pro-title">Unit Price</th>
+                                            <th class="pro-price">Qty</th>
+                                            <th class="pro-quantity">Total Amount Without Discount</th>
+                                            <th class="pro-subtotal">Discount Percent</th>
+                                            <th class="pro-subtotal">Total Discount Amount</th>
+                                            <th class="pro-remove">Total Amount After Discount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Cart.Items)
+                                        {
+                                            <tr>
+                                                <td class="pro-thumbnail">
+                                                    <a>
+                                                        <img src="~/ProductPictures/@item.Picture" class="img-fluid"
+                                                             alt="@item.Name">
+                                                    </a>
+                                                </td>
+                                                <td class="pro-title">
+                                                    <a>@item.Name</a>
+                                                </td>
+                                                <td class="pro-price">
+                                                    <span>@item.UnitPrice.ToMoney()$</span>
+                                                </td>
+                                                <td class="pro-price">
+                                                    <span>@item.Count </span>
+                                                </td>
+                                                <td class="pro-subtotal">
+                                                    <span>@item.TotalItemPrice.ToMoney()$</span>
+                                                </td>
+                                                <td class="pro-subtotal">
+                                                    <span>@item.DiscountRate %</span>
+                                                </td>
+                                                <td class="pro-subtotal">
+                                                    <span>@item.DiscountAmount.ToMoney()$</span>
+                                                </td>
+                                                <td class="pro-subtotal">
+                                                    <span>@item.ItemPayAmount.ToMoney()$</span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6 col-12 d-flex">
+                                    <div class="cart-summary">
+                                        <div class="cart-summary-wrap">
+                                            <h4>Payment Method</h4>
+                                            @foreach (var method in PaymentMethod.GetList())
+                                            {
+                                                <div class="single-method">
+                                                    <input type="radio" id="payment_@method.Id" name="paymentMethod" value="@method.Id" @(PaymentMethod.GetList().First().Id == method.Id ? "checked" : "")>
+                                                    <label for="payment_@method.Id">@method.Name</label>
+                                                    <p data-method="@method.Id" style="display:@(PaymentMethod.GetList().First().Id == method.Id ? "block" : "none")">@method.Description</p>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12 d-flex">
+                                    <div class="cart-summary">
+                                        <div class="cart-summary-wrap">
+                                            <h4>Your Order Summary</h4>
+                                            <p>Total Amount <span>@Model.Cart.TotalAmount.ToMoney()$</span></p>
+                                            <p>Discount Amount <span>@Model.Cart.DiscountAmount.ToMoney()$</span></p>
+                                            <h2>Grand Total <span>@Model.Cart.PayAmount.ToMoney()$</span></h2>
+                                        </div>
+                                        <div class="cart-summary-button">
+                                            <button class="checkout-btn" asp-page-handler="Pay" >Payment</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

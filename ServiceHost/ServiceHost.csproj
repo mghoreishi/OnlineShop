@@ -1,0 +1,191 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>269ff6c3-f992-4550-b232-90fe1f40db14</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AccountManagement.Configuration\AccountManagement.Configuration.csproj" />
+    <ProjectReference Include="..\BlogManagement.Infrastructure.Configuration\BlogManagement.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\CommentManagement.Application.Contracts\CommentManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\CommentManagement.Infrastructure.Configuration\CommentManagement.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
+    <ProjectReference Include="..\InventoryManagement.Infrastructure.Configuration\InventoryManagement.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\InventoryManagement.Presentation\InventoryManagement.Presentation.Api.csproj" />
+    <ProjectReference Include="..\ShopManagement.Configuration\ShopManagement.Configuration.csproj" />
+    <ProjectReference Include="..\ShopManagement.Presentation.Api\ShopManagement.Presentation.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.6.20312.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0-preview.6.20323.1" />
+    <PackageReference Include="Nancy" Version="1.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="wwwroot\ProductPictures\دکوری\صندلی-پاف-آرتین-مدل-adt\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\AdminTheme\assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <None Include="wwwroot\AdminTheme\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <None Include="wwwroot\AdminTheme\assets\bootstrap3-editable\bootstrap-editable.js" />
+    <None Include="wwwroot\AdminTheme\assets\bootstrap3-editable\demo-xeditable.js" />
+    <None Include="wwwroot\AdminTheme\assets\bootstrap3-editable\moment.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\chartjs\chart.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\chartjs\chartjs.init.js" />
+    <None Include="wwwroot\AdminTheme\assets\chat\moment-2.2.1.js" />
+    <None Include="wwwroot\AdminTheme\assets\codemirror\codemirror.js" />
+    <None Include="wwwroot\AdminTheme\assets\codemirror\custom.codemirror.js" />
+    <None Include="wwwroot\AdminTheme\assets\codemirror\formatting.js" />
+    <None Include="wwwroot\AdminTheme\assets\codemirror\javascript.js" />
+    <None Include="wwwroot\AdminTheme\assets\codemirror\xml.js" />
+    <None Include="wwwroot\AdminTheme\assets\colorpicker\bootstrap-colorpicker.js" />
+    <None Include="wwwroot\AdminTheme\assets\comingsoon\jquery.countdown.js" />
+    <None Include="wwwroot\AdminTheme\assets\comingsoon\jquery.simple-text-rotator.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\counterup\jquery.counterup.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\counterup\waypoints.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\AdminTheme\assets\css\bootstrap.css.map" />
+    <None Include="wwwroot\AdminTheme\assets\datatables\dataTables.bootstrap.js" />
+    <None Include="wwwroot\AdminTheme\assets\datatables\datatables.js" />
+    <None Include="wwwroot\AdminTheme\assets\datatables\jquery.dataTables.js" />
+    <None Include="wwwroot\AdminTheme\assets\datatables\jquery.dataTables.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\dropzone\dropzone.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\easypie-chart\easypiechart.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\easypie-chart\example.js" />
+    <None Include="wwwroot\AdminTheme\assets\easypie-chart\jquery.easypiechart.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\fastclick\fastclick.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.crosshair.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.init.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.pie.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.resize.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.selection.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.stack.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.time.js" />
+    <None Include="wwwroot\AdminTheme\assets\flot-chart\jquery.flot.tooltip.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\animated.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\core.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\fixed-width.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\font-awesome.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\icons.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\larger.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\list.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\mixins.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\path.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\spinning.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\stacked.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\less\variables.less" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_animated.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_path.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_spinning.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_variables.scss" />
+    <None Include="wwwroot\AdminTheme\assets\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\AdminTheme\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\AdminTheme\assets\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\AdminTheme\assets\form-wizard\bootstrap-validator.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\form-wizard\jquery.steps.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\form-wizard\wizard-init.js" />
+    <None Include="wwwroot\AdminTheme\assets\fullcalendar\dragging-calendar-event-init.js" />
+    <None Include="wwwroot\AdminTheme\assets\fullcalendar\external-dragging-calendar.js" />
+    <None Include="wwwroot\AdminTheme\assets\fullcalendar\fullcalendar.js" />
+    <None Include="wwwroot\AdminTheme\assets\fullcalendar\fullcalendar.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\fullcalendar\moment.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\gallery\isotope.js" />
+    <None Include="wwwroot\AdminTheme\assets\gmaps\gmaps-plugin.js" />
+    <None Include="wwwroot\AdminTheme\assets\gmaps\gmaps.js" />
+    <None Include="wwwroot\AdminTheme\assets\images\big\Thumbs.db" />
+    <None Include="wwwroot\AdminTheme\assets\images\small\Thumbs.db" />
+    <None Include="wwwroot\AdminTheme\assets\images\users\Thumbs.db" />
+    <None Include="wwwroot\AdminTheme\assets\ion-rangeslider\ion.rangeSlider.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\ion-rangeslider\ui-sliders.js" />
+    <None Include="wwwroot\AdminTheme\assets\ionicon\fonts\ionicons.svg" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-blockui\jquery.blockUI.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-datatables-editable\dataTables.bootstrap.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-datatables-editable\datatables.editable.init.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-datatables-editable\jquery.dataTables.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-detectmobile\detect.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-knob\excanvas.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-knob\jquery.knob.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-multi-select\jquery.multi-select.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-multi-select\jquery.quicksearch.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-slimscroll\jquery.slimscroll.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-sparkline\charts-sparkline.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery-sparkline\jquery.sparkline.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery.validate\form-validation-init.js" />
+    <None Include="wwwroot\AdminTheme\assets\jquery.validate\jquery.validate.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\bootstrap.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\jquery-ui-1.10.1.custom.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\jquery.app.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\jquery.chat.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\jquery.dashboard.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\jquery.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\jquery.nicescroll.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\jquery.scrollTo.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\jquery.todo.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\modernizr.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\npm.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\persian-date.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\persian-datepicker.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\site.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\skycons.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\waves.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\wow.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\jvectormap\gdp-data.js" />
+    <None Include="wwwroot\AdminTheme\assets\jvectormap\jquery-jvectormap-2.0.2.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\jvectormap\jquery-jvectormap-europe-mill-en.js" />
+    <None Include="wwwroot\AdminTheme\assets\jvectormap\jquery-jvectormap-uk-mill-en.js" />
+    <None Include="wwwroot\AdminTheme\assets\jvectormap\jquery-jvectormap-us-aea-en.js" />
+    <None Include="wwwroot\AdminTheme\assets\jvectormap\jquery-jvectormap-us-il-chicago-mill-en.js" />
+    <None Include="wwwroot\AdminTheme\assets\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <None Include="wwwroot\AdminTheme\assets\jvectormap\jvectormap.init.js" />
+    <None Include="wwwroot\AdminTheme\assets\magnific-popup\magnific-popup.js" />
+    <None Include="wwwroot\AdminTheme\assets\modal-effect\js\classie.js" />
+    <None Include="wwwroot\AdminTheme\assets\modal-effect\js\modalEffects.js" />
+    <None Include="wwwroot\AdminTheme\assets\morris\morris.init.js" />
+    <None Include="wwwroot\AdminTheme\assets\morris\morris.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\morris\raphael.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\nestable\jquery.nestable.js" />
+    <None Include="wwwroot\AdminTheme\assets\nestable\nestable.js" />
+    <None Include="wwwroot\AdminTheme\assets\notifications\notifications.js" />
+    <None Include="wwwroot\AdminTheme\assets\notifications\notify-metro.js" />
+    <None Include="wwwroot\AdminTheme\assets\notifications\notify.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\peity-chart\jquery.peity.init.js" />
+    <None Include="wwwroot\AdminTheme\assets\peity-chart\jquery.peity.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\responsive-table\rwd-table.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\select2\select2.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\spinner\spinner.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\summernote\summernote.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\sweet-alert\sweet-alert.init.js" />
+    <None Include="wwwroot\AdminTheme\assets\sweet-alert\sweet-alert.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\tagsinput\jquery.tagsinput.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\timepicker\bootstrap-datepicker.js" />
+    <None Include="wwwroot\AdminTheme\assets\timepicker\bootstrap-timepicker.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\toggles\toggles.min.js" />
+  </ItemGroup>
+
+</Project>

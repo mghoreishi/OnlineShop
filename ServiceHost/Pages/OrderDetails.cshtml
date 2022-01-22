@@ -1,0 +1,130 @@
+﻿@page "{id}"
+@using _0_Framework.Application
+@model ServiceHost.Pages.OrderDetailsModel
+@{
+    ViewData["Title"] = "Order Details";
+    int rowNumber = 1;
+}
+
+<div class="breadcrumb-area section-space--half">
+    <div class="container wide">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-wrapper breadcrumb-bg">
+                    <div class="breadcrumb-content">
+                        <h2 class="breadcrumb-content__title">Order Details</h2>
+                        <ul class="breadcrumb-content__page-map">
+                            <li>
+                                <a asp-page="./Index">HOME</a>
+                            </li>
+                            <li class="active">Order Details</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+
+                        <div class="cart-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Row</th>
+                                        <th>Product</th>
+                                        <th>Qty</th>
+                                        <th>Unit Price</th>
+                                        <th>Discount Percent</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.OrderDetails.OrderItems)
+                                    {
+                                        <tr>
+
+                                            <td class="pro-title">
+                                                @rowNumber
+                                            </td>
+                                            <td class="pro-title">
+                                                <span>@item.Product</span>
+                                            </td>
+                                            <td class="pro-title">
+                                                <span>@item.Count </span>
+                                            </td>
+                                            <td class="pro-price">
+                                                <span>@item.UnitPrice.ToMoney()$</span>
+                                            </td>
+                                            <td class="pro-title">
+                                                <span>@item.DiscountRate %</span>
+                                            </td>
+
+                                        </tr>
+                                        rowNumber++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-12 d-flex">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-12 d-flex">
+                                            <div class="cart-summary">
+                                                <div class="cart-summary-wrap">
+                                                    <h4>Payment Method</h4>
+                                                    @if (Model.OrderDetails.IsCanceled)
+                                                    {
+                                                        <span class="text-danger">Canceled</span>
+                                                    }
+                                                    @if (Model.OrderDetails.IsPaid)
+                                                    {
+                                                        <span class="text-success">Paid</span>
+                                                    }
+                                                    @if (!Model.OrderDetails.IsCanceled && !Model.OrderDetails.IsPaid)
+                                                    {
+                                                        <span class="text-warning">Pending</span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-12 d-flex">
+                                            <div class="cart-summary">
+                                                <div class="cart-summary-wrap">
+                                                    <h4>Address</h4>
+                                                    <span>@Model.OrderDetails.Address</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 col-12 d-flex">
+                                <div class="cart-summary">
+                                    <div class="cart-summary-wrap">
+                                        <h4>Your Order Summary</h4>
+                                        <p>Total Amount <span>@Model.OrderDetails.TotalAmount.ToMoney()$</span></p>
+                                        <p>Discount Amount <span>@Model.OrderDetails.DiscountAmount.ToMoney()$</span></p>
+                                        <h2>Grand Total <span>@Model.OrderDetails.PayAmount.ToMoney()$</span></h2>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

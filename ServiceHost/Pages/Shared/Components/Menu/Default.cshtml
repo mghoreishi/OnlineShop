@@ -1,0 +1,328 @@
+﻿@model _01_OnlineShopQuery.MenuModel
+@inject _0_Framework.Application.IAuthHelper AuthHelper
+
+<div class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="header-wrapper d-none d-lg-flex">
+                    <div class="logo">
+                        <a asp-page="/Index">
+                            <img src="~/Theme/assets/img/Homelogo.png" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                    <div class="navigation-menu-wrapper">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a asp-page="/Index">HOME</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a>PRODUCTS</a>
+                                    <ul class="sub-menu">
+                                        @foreach (var category in Model.ProductCategories)
+                                        {
+                                            <li>
+                                                <a asp-page="./ProductCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a>ARTICLES</a>
+                                    <ul class="sub-menu">
+                                        @foreach (var category in Model.ArticleCategories)
+                                        {
+                                            <li>
+                                                <a asp-page="./ArticleCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/ghoreishi-info/">CONTACT</a>
+                                </li>
+                                @if (AuthHelper.IsAuthenticated())
+                                {
+                                    <li>
+                                        <a asp-page="/Account/Logout">EXIT</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-page="/Account/Login">SIGN IN</a>
+                                    </li>
+                                }
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="header-icon-wrapper">
+                        <ul class="icon-list">
+                            <li>
+                                <a href="javascript:void(0)" id="search-overlay-trigger">
+                                    <i class="ion-ios-search-strong"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="header-cart-icon">
+                                    <a href="#" id="minicart-trigger">
+                                        <i class="ion-bag"></i>
+                                        <span class="counter cart_items_count">0</span>
+                                    </a>
+                                    <div class="mini-cart" id="mini-cart">
+                                        <div class="cart-items-wrapper ps-scroll cart_items_wrapper" >
+
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <a asp-page="/Cart">VIEW CART</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+
+
+                                <div class="header-settings-icon">
+                                    <a href="javascript:void(0)" class="header-settings-trigger"
+                                       id="header-settings-trigger">
+                                        <div class="setting-button">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </a>
+
+                                    <div class="settings-menu-wrapper" id="settings-menu-wrapper">
+                                        <div class="single-settings-block">
+
+                                            <ul>
+                                                @if (!AuthHelper.IsAuthenticated())
+                                                {
+                                                    <h4 class="title">My Profile </h4>
+                                                    <li>
+                                                        <a asp-page="/Account/Register">Register</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-page="/Account/Login">Login</a>
+                                                    </li>
+                                                }
+                                                @if (AuthHelper.IsAuthenticated())
+                                                {
+                                                    <h4 class="title">@AuthHelper.CurrentAccountInfo().Fullname </h4>
+
+                                                    <li>
+                                                        <a asp-page="/Orders">My Orders</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-page="/Account/ChangeAddress">Change Address</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-page="/Account/ChangePassword">Change Password</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-page="/Account/Logout">EXIT</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="header-mobile-navigation d-block d-lg-none">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-6">
+                            <div class="header-logo">
+                                <a asp-page="/Index">
+                                    <img src="~/Theme/assets/img/Homelogo.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <div class="mobile-navigation text-right">
+                                <div class="header-icon-wrapper">
+                                    <ul class="icon-list justify-content-end">
+                                        <li>
+                                            <div class="header-cart-icon">
+                                                <a asp-page="/Cart" id="minicart-trigger">
+                                                    <i class="ion-bag"></i>
+                                                    <span class="counter cart_items_count" >0</span>
+                                                </a>
+                                                <div class="mini-cart" id="mini-cart">
+                                                    <div class="cart-items-wrapper ps-scroll cart_items_count
+                                                         " >
+
+                                                    </div>
+                                                    <div class="cart-buttons">
+                                                        <a asp-page="/Cart">VIEW CART</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" class="mobile-menu-icon"
+                                               id="mobile-menu-trigger">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
+    <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
+        <i class="ion-android-close"></i>
+    </a>
+
+    <div class="offcanvas-wrapper">
+
+        <div class="offcanvas-inner-content">
+            <div class="offcanvas-mobile-search-area">
+                <form action="#">
+                    <input type="search" placeholder="Search ...">
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <nav class="offcanvas-navigation">
+                <ul>
+                    <li class="">
+                        <a asp-page="/Index">HOME</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a>PRODUCTS</a>
+                        <ul class="sub-menu">
+                            @foreach (var category in Model.ProductCategories)
+                            {
+                                <li>
+                                    <a asp-page="./ProductCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children">
+                        <a>ARTICLES</a>
+                        <ul class="sub-menu">
+                            @foreach (var category in Model.ArticleCategories)
+                            {
+                                <li>
+                                    <a asp-page="./ArticleCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="https://www.linkedin.com/in/ghoreishi-info/">CONTACT</a>
+                    </li>
+
+                    <li class="menu-item-has-children">
+
+
+                        @if (!AuthHelper.IsAuthenticated())
+                        {
+                            <a>My Profile </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a asp-page="/Account/Register">Register</a>
+                                </li>
+                                <li>
+                                    <a asp-page="/Account/Login">Login</a>
+                                </li>
+                            </ul>
+                        }
+                        @if (AuthHelper.IsAuthenticated())
+                        {
+                            <a>@AuthHelper.CurrentAccountInfo().Fullname </a>
+                            <ul class="sub-menu">
+
+                                <li>
+                                    <a asp-page="/Orders">My Orders</a>
+                                </li>
+                                <li>
+                                    <a asp-page="/Account/ChangeAddress">Change Address</a>
+                                </li>
+                                <li>
+                                    <a asp-page="/Account/ChangePassword">Change Password</a>
+                                </li>
+                                <li>
+                                    <a asp-page="/Account/Logout" >EXIT</a>
+                                </li>
+                            </ul>
+                        }
+                    </li>
+                </ul>
+            </nav>
+
+            @*<div class="offcanvas-settings">
+                    <nav class="offcanvas-navigation">
+                        <ul>
+                            <li class="menu-item-has-children">
+                                <a >My Profile </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a asp-page="/Register">Register</a>
+                                    </li>
+                                    <li>
+                                        <a asp-page="/Login">Login</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>*@
+
+            <div class="offcanvas-widget-area">
+                <div class="off-canvas-contact-widget">
+                    <div class="header-contact-info">
+                        <ul class="header-contact-info__list">
+                            @*<li>
+                                <i class="ion-android-phone-portrait"></i>
+                                <a href="tel://12452456012">
+                                    (+98) 9105376648
+                                </a>*@
+                            </li>
+                            <li>
+                                <i class="ion-android-mail"></i> <a href="mailto:ghoreishi.info@yahoo.com">ghoreishi.info@yahoo.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--Off Canvas Widget Social Start-->
+                <div class="off-canvas-widget-social">
+                    <a href="https://github.com/mghoreishi" title="GitHub"  target="_blank">
+                        <i class="fa fa-github"></i>
+                    </a>                  
+                    <a href="https://www.linkedin.com/in/ghoreishi-info/" title="LinkedIn"  target="_blank">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.hackerrank.com/ghoreishi" title="HackerRank"  target="_blank">
+                        <i class="fa fa-code"></i>
+                    </a>
+                    <a href="#" title="StackOverFlow"  target="_blank">
+                        <i class="fa fa-stack-overflow"></i>
+                    </a>
+                </div>
+                <!--Off Canvas Widget Social End-->
+            </div>
+        </div>
+    </div>
+</div>

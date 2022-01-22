@@ -1,0 +1,73 @@
+﻿@model AccountManagement.Application.Contracts.Account.RegisterAccount
+@{
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">Create New User</h4>
+</div>
+
+<form asp-page="./Index" asp-page-handler="Create"
+      method="post"
+      data-ajax="true"
+      data-callback=""
+      data-action="Refresh"
+      enctype="multipart/form-data">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Fullname" class="control-label">Name</label>
+                    <input type="text" class="form-control" asp-for="Fullname">
+                    <span asp-validation-for="Fullname" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label">User Name</label>
+                    <input type="text" class="form-control" asp-for="Username">
+                    <span asp-validation-for="Username" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Mobile" class="control-label">Mobile</label>
+                    <input type="text" class="form-control" asp-for="Mobile">
+                    <span asp-validation-for="Mobile" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Password</label>
+                    <input type="text" class="form-control" asp-for="Password">
+                    <span asp-validation-for="Password" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="RoleId" class="control-label">Role</label>
+                    <select class="form-control" asp-for="RoleId"
+                            asp-items='new SelectList(Model.Roles, "Id", "Name")'>
+                        <option value="0">Product Category</option>
+                    </select>
+                    <span asp-validation-for="RoleId" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="ProfilePhoto" class="control-label">Image Profile</label>
+                    <input type="file" class="form-control" asp-for="ProfilePhoto" accept="image/*">
+                    <span asp-validation-for="ProfilePhoto" class="error"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info waves-effect waves-light">Create</button>
+    </div>
+</form>
