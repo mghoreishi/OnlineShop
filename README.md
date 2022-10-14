@@ -1,4 +1,7 @@
 # Online Shop Web Site Project
+
+# Give a Star! ⭐
+
 Online Shop Website Project based on .NET Core, EF Core, Razor pages, SQL Server, Onion Architect
 
 ![alt text](https://github.com/mghoreishi/OnlineShop/blob/master/mainPage1.jpg)
